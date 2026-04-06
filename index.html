@@ -616,6 +616,22 @@ answer.classList.add('active');
 element.classList.add('active');
 }
 }
+function copyCodeAndRedirect(code, btn){
+var codeToCopy = code.toString().trim();
+navigator.clipboard.writeText(codeToCopy).then(function(){
+var originalText=btn.textContent;
+btn.textContent='✅ 복사 완료!';
+btn.disabled=true;
+setTimeout(function(){
+btn.textContent=originalText;
+btn.disabled=false;
+window.open('http://app.ac/8tpSA7M13','_blank','noopener,noreferrer');
+},1500);
+}).catch(function(err){
+alert('코드 복사 실패. 수동으로 복사해주세요: '+codeToCopy);
+window.open('http://app.ac/8tpSA7M13','_blank','noopener,noreferrer');
+});
+}
 function copyCode(code,btn){
 navigator.clipboard.writeText(code).then(function(){
 var originalText=btn.textContent;
